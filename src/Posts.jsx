@@ -7,7 +7,10 @@ const Posts = ({ posts, auth })=> {
         posts.map( post => {
           return (
             <li key={ post._id } className={ post.author._id === auth._id ? 'mine': ''}>
-              <Link to={`/posts/${post._id}`}>{ post.title }</Link> ${ (post.price*1).toFixed(2) } created by:
+              <Link to={`/posts/${post._id}`}>{ post.title }</Link> 
+              <br/> Price: ${ (post.price*1).toFixed(2) } 
+               <br/> created by:
+              <br/> from: {post.location}
             </li>
           );
         })
