@@ -23,13 +23,13 @@ const AuthForm = (props)=> {
   };
 
   return (
-    <form onSubmit={ submit }>
+    <form onSubmit={submit}>
       {
         error ? JSON.stringify(error, null, 2) : null
       }
       <input value={ username } onChange={ ev => setUsername(ev.target.value )}/>
-      <input value={ password } onChange={ ev => setPassword(ev.target.value )}/>
-      <button>{ props.txt }</button>
+      <input type="password" value={ password } onChange={ ev => setPassword(ev.target.value )}/>
+      <button disabled={!username || !password}>{ props.txt }</button>
     </form>
   );
 };

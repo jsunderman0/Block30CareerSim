@@ -9,4 +9,16 @@ form > * {
 
 .mine {
   font-weight: bold;
+  border: 5px solid black;
+  padding: 0.5rem;
 }
+
+.posts{
+  display: flex;
+  
+}
+
+.selected{
+    border: solid 5 px fuchsia;
+}
+
