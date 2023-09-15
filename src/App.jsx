@@ -58,6 +58,7 @@ function App() {
   };
 
 
+
   return (
     <>
       <h1><Link to='/'>Strangers Things ({ posts.length })</Link></h1>
@@ -67,7 +68,8 @@ function App() {
             <h1>
               Welcome { auth.username } 
               <br/>
-              You have made: {posts.length} posts
+              You have made: ({posts.filter((post) => post.author.username === auth.username).length}) posts
+              <br/>
               <button onClick={ logout }>Logout</button>
             </h1>
             <Link to='/posts/create'>Create A Post</Link>

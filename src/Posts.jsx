@@ -5,7 +5,7 @@ const Posts = ({ posts, auth })=> {
     <ul>
       {
         posts.map( post => {
-          console.log(post)
+          
           return (
             <li key={ post._id } className={ post.author._id === auth._id ? 'mine': ''}>
               <Link to={`/posts/${post._id}`}>{ post.title }</Link> 
