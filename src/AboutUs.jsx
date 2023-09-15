@@ -1,7 +1,7 @@
 const AboutUs = ()=> {
   return (
     <div>
-      TODO: Add some information about Us!
+      <p> This is a page that the Fullstack Academy Online section 2307 can create posts on </p>
     </div>
   );
 };
