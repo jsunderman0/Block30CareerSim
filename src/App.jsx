@@ -66,7 +66,7 @@ function App() {
     await api.removePost(post)
     //update the state filter keep everything except what I just removed
    setPosts(posts.filter((item) => item._id !==  post._id))
-    // navigate('/');
+    navigate('/');
   };
 
 
