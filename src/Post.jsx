@@ -17,7 +17,7 @@ const Post = ({ posts, auth, removePost })=> {
     <div>
       <h1>{ post.title } created by: {post.author.username}</h1>
       <p> Description: {post.description} </p>
-      { auth._id === post.author._id ? <button onClick={(e) => removePost(post)}>x</button>: ''}
+      { auth._id === post.author._id ? <button onClick={(e) => removePost(post)}>remove post</button>: ''}
     </div>
   );
 };

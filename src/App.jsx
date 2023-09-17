@@ -7,6 +7,7 @@ import Post from './Post';
 import AboutUs from './AboutUs';
 import ContactUs from './ContactUs'
 import axios from 'axios'
+import MostExpensivePost from './MostExpensivePost'
 
 import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
 
@@ -87,6 +88,7 @@ function App() {
             <Link to='/posts/create'>Create A Post</Link>
             <Link to='/about_us'>About Us</Link>
             <Link to='/contact_us'> Contact Us </Link>
+            <Link to='/most_expensive_post'> Most Expensive Post</Link>
             <Routes>
               <Route path='/posts/create' element={ <CreatePost createPost={ createPost } />} />
             </Routes>
@@ -104,6 +106,7 @@ function App() {
         <Route path='/posts/:id' element={ <Post removePost= {removePost} posts={ posts } auth={ auth }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact_us' element={<ContactUs/>}/>
+        <Route path='/most_expensive_post' element={<MostExpensivePost posts = {posts}/>}/>
       </Routes>
     </>
   )
