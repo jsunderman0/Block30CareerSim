@@ -6,6 +6,7 @@ import Posts from './Posts';
 import Post from './Post';
 import AboutUs from './AboutUs';
 import ContactUs from './ContactUs'
+import axios from 'axios'
 
 import { useNavigate, useParams, Link, Routes, Route } from 'react-router-dom';
 
@@ -14,6 +15,7 @@ function App() {
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
+  console.log(posts)
 
   useEffect(()=> {
     const fetchPosts = async()=> {
@@ -52,9 +54,19 @@ function App() {
   };
 
   const createPost = async(post)=> {
+    
     post = await api.createPost(post);
     setPosts([...posts, post]);
     navigate(`/posts/${post._id}`);
+  };
+
+  const removePost = async(post)=> {
+    console.log(post)
+    //post = await axios.delete(`https://strangers-things.herokuapp.com/api/2307-FTB-ET-WEB-FT/${post._id}`);
+    await api.removePost(post)
+    //update the state filter keep everything except what I just removed
+   setPosts(posts.filter((item) => item._id !==  post._id))
+    // navigate('/');
   };
 
 
@@ -89,7 +101,7 @@ function App() {
       }
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
-        <Route path='/posts/:id' element={ <Post posts={ posts } auth={ auth }/>} />
+        <Route path='/posts/:id' element={ <Post removePost= {removePost} posts={ posts } auth={ auth }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact_us' element={<ContactUs/>}/>
       </Routes>

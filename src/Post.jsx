@@ -1,18 +1,23 @@
 import { useState, useEffect } from 'react'
 
-import { useParams, Link } from 'react-router-dom';
+import { useParams, Link, useNavigate } from 'react-router-dom';
 
-const Post = ({ posts, auth })=> {
+import axios from 'axios'
+
+const Post = ({ posts, auth, removePost })=> {
   const { id } = useParams();
   const post = posts.find(post => post._id === id);
+  const navigate = useNavigate()
+
+
   if(!post){
     return null;
   }
   return (
     <div>
-      <h1>{ post.title } created by: </h1>
+      <h1>{ post.title } created by: {post.author.username}</h1>
       <p> Description: {post.description} </p>
-      { auth._id === post.author._id ? <button>x</button>: ''}
+      { auth._id === post.author._id ? <button onClick={(e) => removePost(post)}>x</button>: ''}
     </div>
   );
 };
