@@ -69,6 +69,20 @@ const removePost = async(post)=> {
   ;
 };
 
+const updatePost = async(post)=> {
+  const token = window.localStorage.getItem('token');
+  const response = await axios.put(
+    `${BASE_URL}/posts/${post._id}`,
+    { post },
+    {
+      headers: {
+        authorization: `Bearer ${ token }`
+      }
+    }
+  );
+  return response.data.data.post;
+};
+
 const login = async(credentials)=> {
   const response = await axios.post(
     `${BASE_URL}/users/login`,
@@ -86,7 +100,8 @@ const api = {
   loginWithToken,
   fetchPosts,
   createPost,
-  removePost
+  removePost,
+  updatePost
 
 };
 

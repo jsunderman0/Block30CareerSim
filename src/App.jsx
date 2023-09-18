@@ -70,6 +70,13 @@ function App() {
     navigate('/');
   };
 
+  const updatePost = async(post)=> {
+    
+    post = await api.updatePost(post);
+    setPosts([...posts, post]);
+    navigate(`/posts/${post._id}`);
+  };
+
 
 
   return (
@@ -103,7 +110,7 @@ function App() {
       }
       <Posts posts={ posts } auth={ auth }/>
       <Routes>
-        <Route path='/posts/:id' element={ <Post removePost= {removePost} posts={ posts } auth={ auth }/>} />
+        <Route path='/posts/:id' element={ <Post updatePost= {updatePost} removePost= {removePost} posts={ posts } auth={ auth }/>} />
         <Route path='/about_us' element={ <AboutUs />} />
         <Route path='/contact_us' element={<ContactUs/>}/>
         <Route path='/most_expensive_post' element={<MostExpensivePost posts = {posts}/>}/>
